@@ -8,7 +8,7 @@
     "start": "node -r esm app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Kealan Heena",
   "license": "ISC",
   "dependencies": {
     "esm": "^3.2.25"
