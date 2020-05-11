@@ -17,4 +17,14 @@ describe("app", () => {
     testApp.post('hi world')
     expect(testApp.messages.length).to.equal(2)
   });
+
+  it("message has content, date, and id", function(){
+    expect(testApp.messages[0].content).to.equal("hi world")
+    expect(testApp.messages[0].date).not.to.equal(undefined)
+    expect(testApp.messages[0].id).to.equal(0)
+  });
+
+  it("app reads (get)", function() {
+    expect(testApp.get(0).content).to.equal("hi world")
+  });
 });
