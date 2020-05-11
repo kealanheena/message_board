@@ -27,4 +27,9 @@ describe("app", () => {
   it("app reads (get)", function() {
     expect(testApp.get(0).content).to.equal("hi world")
   });
+
+  it("app updates (update)", function() {
+    testApp.update(0, "hello world")
+    expect(testApp.get(0).content).to.equal('hello world')
+  });
 });

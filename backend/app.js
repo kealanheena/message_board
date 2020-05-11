@@ -10,11 +10,15 @@ class MessageApp {
       date: new Date()
     }
     this.messages.push(item)
-    return this.message
+    return this.message;
   };
 
   get (id) {
-    return this.messages[id]
+    return this.messages[id];
+  }
+
+  update(id, content) {
+    this.messages[id].content = content;
   }
 }
 
