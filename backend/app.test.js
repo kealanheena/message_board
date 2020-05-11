@@ -32,4 +32,10 @@ describe("app", () => {
     testApp.update(0, "hello world")
     expect(testApp.get(0).content).to.equal('hello world')
   });
+
+  it("app deletes (delete)", function() {
+    testApp.delete(0)
+    expect(testApp.messages.length).to.equal(0)
+  });
+
 });
