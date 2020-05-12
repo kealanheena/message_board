@@ -1,3 +1,11 @@
+function newID(array) {
+  if (array.length > 0) {
+    return array[array.length-1].id + 1
+  } else {
+    return 0
+  }
+}
+
 class MessageApp {
   constructor() {
     this.messages = []
@@ -5,7 +13,7 @@ class MessageApp {
 
   post (content) {
     let item = {
-      id: this.messages.length,
+      id: newID(this.messages),
       content: content,
       date: new Date()
     }

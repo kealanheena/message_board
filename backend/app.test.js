@@ -38,10 +38,12 @@ describe("app", () => {
     expect(testApp.messages.length).to.equal(0)
   });
 
-  it("app deletes (delete)", function() {
-    testApp.post('hello world')
-    testApp.delete(0)
-    expect(testApp.messages[0].content).to.equal("hello world")
+  it("id's are always unique", function() {
+    testApp.post('0')
+    testApp.post('1')
+    testApp.delete(1)
+    testApp.post('2')
+    expect(testApp.messages[1].id).to.equal(2)
   });
 
 });
