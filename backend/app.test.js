@@ -7,13 +7,13 @@ describe("app", () => {
   beforeEach(() => {
     testApp = new MessageApp
     testApp.post('hi world')
-  })
-
-  it("app has messages", () => {
-    expect(testApp.messages).to.be.an("array");
   });
 
-  it("app creates message (post)", () => {
+  it("app has messages", function() {
+    expect(testApp.messages).to.be.an('array');
+  });
+
+  it("app creates message (post)", function() {
     testApp.post('hi world')
     expect(testApp.messages.length).to.equal(2)
   });
@@ -25,16 +25,16 @@ describe("app", () => {
   });
 
   it("app reads (get)", function() {
-    expect(testApp.get(0).content).to.equal("hi world")
+    expect(testApp.get(1).content).to.equal("hi world")
   });
 
   it("app updates (update)", function() {
-    testApp.update(0, "hello world")
-    expect(testApp.get(0).content).to.equal('hello world')
+    testApp.update(1, "hello world")
+    expect(testApp.get(1).content).to.equal('hello world')
   });
 
   it("app deletes (delete)", function() {
-    testApp.delete(0)
+    testApp.delete(1)
     expect(testApp.messages.length).to.equal(0)
   });
 
@@ -52,16 +52,15 @@ describe("app", () => {
     testApp.post('3')
     testApp.delete(0)
     testApp.delete(2)
-    expect(testApp.get(0).id).to.equal(1)
+    expect(testApp.get(1).id).to.equal(1)
   });
-
+  
   it("app updates correctly", function() {
     testApp.post('1')
     testApp.post('2')
     testApp.delete(1)
-    testApp.update(1, 'update')
-    expect(testApp.get(1).content).to.equal('update')
+    testApp.update(2, 'update')
+    expect(testApp.get(2).content).to.equal('update')
   });
-
 
 });
