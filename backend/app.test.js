@@ -38,4 +38,10 @@ describe("app", () => {
     expect(testApp.messages.length).to.equal(0)
   });
 
+  it("app deletes (delete)", function() {
+    testApp.post('hello world')
+    testApp.delete(0)
+    expect(testApp.messages[0].content).to.equal("hello world")
+  });
+
 });

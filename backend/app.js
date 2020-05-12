@@ -10,7 +10,7 @@ class MessageApp {
       date: new Date()
     }
     this.messages.push(item)
-    return this.message;
+    return this.messages;
   };
 
   get (id) {
@@ -19,10 +19,12 @@ class MessageApp {
 
   update(id, content) {
     this.messages[id].content = content;
+    return this.messages[id]
   }
 
   delete(id) {
     this.messages.splice(id, 1);
+    return this.messages
   }
 }
 
