@@ -2,7 +2,7 @@ function newID(array) {
   if (array.length > 0) {
     return array[array.length-1].id + 1
   } else {
-    return 0
+    return 1
   }
 }
 
@@ -31,7 +31,7 @@ class MessageApp {
   }
 
   delete(id) {
-    this.messages.splice(id, 1);
+    this.messages.splice(id - 1, 1);
     return this.messages
   }
 }
