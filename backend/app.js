@@ -1,9 +1,15 @@
 import express from 'express'
 const app = express()
+import MessageApp from './lib/model'
+
 const PORT = 3000
 
-app.get('/', (req, res) => {
-  res.send({val: 'Hello World'})
+let messageApp = new MessageApp("/\///json/\//testMessages.json")
+
+app.get('/', async (req, res) => {
+  let result = messageApp.getAll()
+  console.log(result)
+  res.json(result)
 });
 
 app.listen(PORT, () => {
