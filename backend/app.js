@@ -1,20 +1,15 @@
 import express from 'express'
-const app = express()
-import MessageApp from './lib/model'
 
+const app = express()
 const PORT = 3000
 
-let messageApp = new MessageApp("/\///json/\//testMessages.json")
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 
-app.get('/', async (req, res) => {
-  let result = messageApp.getAll()
-  console.log(result)
-  res.json(result)
-});
+app.use(routes)
 
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
-  }
-)
+})
 
-export default app
+module.exports = app;
