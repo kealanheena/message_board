@@ -32,7 +32,7 @@ class MessageApp {
 
 // READ
   get(id){
-    return this.messages.filter(message => message.id === id)[0]
+    return this.messages.filter(message => message.id == id)[0]
   }
 
   getAll(){

@@ -41,8 +41,20 @@ function deleteMessage(id) {
   })
 }
 
+function getSingleMessage(id){
+  return new Promise((resolve, reject) => {
+    let result = messageApp.get(id)
+    if (result !== []) {
+      resolve(result)
+    } else {
+      reject(result)
+    }
+  })
+}
+
 module.exports = {
   getAll,
+  getSingleMessage,
   post,
   deleteMessage
 }

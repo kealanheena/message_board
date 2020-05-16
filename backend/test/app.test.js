@@ -25,6 +25,36 @@ describe("MessageApp Tests", function(){
     })
   })
 
+  it("gets all messages", function(done) {
+    const res = request(MessageApp)
+    .get("/")
+    res.expect(200)
+    .end(function(err, res) {
+      if (err) {
+        return done(err)
+      }
+      console.log(res.body)
+      expect(res.body.length).to.equal(1)
+      expect(res.body[0].id).to.equal(1)
+      expect(res.body[0].content).to.equal('hi world')
+      done()
+    })
+  })
+
+  it("gets a single message", function(done) {
+    const res = request(MessageApp)
+    .get("/message/1")
+    res.expect(200)
+    .end(function(err, res) {
+      if (err) {
+        return done(err)
+      }
+      console.log(res.body)
+      expect(res.body.content).to.equal("hi world")
+      done()
+    })
+  })
+
   it("deletes a message", function(done) {
       const res = request(MessageApp)
       .delete("/delete/1")
