@@ -3,9 +3,9 @@ import { expect } from "chai";
 
 import MessageApp from "../app.js"
 
+let data;
+
 describe("MessageApp Tests", function(){
-  
-  let data;
 
   it("posts a message", function(done) {
     data = {
@@ -21,24 +21,6 @@ describe("MessageApp Tests", function(){
         return(done)
       }
       expect(res.body[0].content).to.equal('hi world');
-      done()
-    })
-  })
-
-  it("message api errors correctly", function(done) {
-    data = {
-      content: ""
-    };
-    const res = request(MessageApp)
-    .post("/message")
-    .send(data)
-    .set("Accept", "application/json")
-    res.expect(404)
-    .end(function(err, res) {
-      if (err) {
-        return done(err)
-      }
-      expect(res.body).to.equal("You can't post an empty message")
       done()
     })
   })
@@ -84,6 +66,40 @@ describe("MessageApp Tests", function(){
         }
         expect(res.body.length).to.equal(0)
         done()
+    })
+  })
+})
+
+describe("message api errors correctly", function() {
+
+  it("posts a message errors", function(done) {
+    data = {
+      content: ""
+    };
+    const res = request(MessageApp)
+    .post("/message")
+    .send(data)
+    .set("Accept", "application/json")
+    res.expect(404)
+    .end(function(err, res) {
+      if (err) {
+        return done(err)
+      }
+      expect(res.body).to.equal("You can't post an empty message")
+      done()
+    })
+  })
+
+  it("gets all errors when no messages", function(done) {
+    const res = request(MessageApp)
+    .get("/")
+    res.expect(404)
+    .end(function(err, res) {
+      if (err) {
+        return done(err)
+      }
+      expect(res.body).to.equal("No messages in database")
+      done()
     })
   })
 })

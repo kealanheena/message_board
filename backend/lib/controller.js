@@ -11,10 +11,10 @@ import MessageApp from './model.js'
 function getAll() {
   return new Promise((resolve, reject) => {
     var result = messageApp.getAll()
-    if (result !== []) {
+    if (result.length !== 0) {
       resolve(result)
     } else {
-      reject(result)
+      reject("No messages in database")
     }
   })
 }
