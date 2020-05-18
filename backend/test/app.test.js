@@ -25,6 +25,24 @@ describe("MessageApp Tests", function(){
     })
   })
 
+  it("message api errors correctly", function(done) {
+    data = {
+      content: ""
+    };
+    const res = request(MessageApp)
+    .post("/message")
+    .send(data)
+    .set("Accept", "application/json")
+    res.expect(404)
+    .end(function(err, res) {
+      if (err) {
+        return done(err)
+      }
+      expect(res.body).to.equal("You can't post an empty message")
+      done()
+    })
+  })
+
   it("gets all messages", function(done) {
     const res = request(MessageApp)
     .get("/")
