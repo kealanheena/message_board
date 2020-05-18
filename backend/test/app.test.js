@@ -55,6 +55,24 @@ describe("MessageApp Tests", function(){
     })
   })
 
+  it("updates a message", function(done) {
+    data = {
+      content: "Hello World"
+    }
+    const res = request(MessageApp)
+    .put('/update/1')
+    .send(data)
+    .set("Accept", "application/json")
+    res.expect(200)
+    .end(function(err, res) {
+      if (err) {
+        return done(err)
+      }
+      expect(res.body[0].content).to.equal("Hello World")
+      done()
+    })
+  })
+
   it("deletes a message", function(done) {
       const res = request(MessageApp)
       .delete("/delete/1")
@@ -99,6 +117,19 @@ describe("message api errors correctly", function() {
         return done(err)
       }
       expect(res.body).to.equal("No messages in database")
+      done()
+    })
+  })
+
+  it("errors if cant find single message", function(done) {
+    const res = request(MessageApp)
+    .get("/message/1")
+    res.expect(404)
+    .end(function(err, res) {
+      if (err) {
+        return done(err)
+      }
+      expect(res.body).to.equal('Message not found in database')
       done()
     })
   })

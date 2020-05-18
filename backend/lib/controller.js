@@ -44,6 +44,17 @@ function deleteMessage(id) {
 function getSingleMessage(id){
   return new Promise((resolve, reject) => {
     let result = messageApp.get(id)
+    if (result) {
+      resolve(result)
+    } else {
+      reject("Message not found in database")
+    }
+  })
+}
+
+function updateMessage(id, content){
+  return new Promise((resolve, reject) => {
+    let result = messageApp.update(id, content)
     if (result !== []) {
       resolve(result)
     } else {
@@ -56,5 +67,6 @@ module.exports = {
   getAll,
   getSingleMessage,
   post,
+  updateMessage,
   deleteMessage
 }
