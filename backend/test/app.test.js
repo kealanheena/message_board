@@ -133,4 +133,22 @@ describe("message api errors correctly", function() {
       done()
     })
   })
+
+  it("errors deleting message that doesn't exist", function(done) {
+    data = {
+      id: 0
+    };
+    const res = request(MessageApp)
+    .delete("/delete/0")
+    .send(data)
+    .set("Accept", "application/json")
+    res.expect(404)
+    .end(function(err, res) {
+      if (err) {
+        return done(err)
+      }
+      expect(res.body).to.equal("Message not found in database")
+      done()
+    })
+  })
 })
