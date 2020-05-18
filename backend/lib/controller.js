@@ -55,10 +55,10 @@ function getSingleMessage(id){
 function updateMessage(id, content){
   return new Promise((resolve, reject) => {
     let result = messageApp.update(id, content)
-    if (result !== []) {
+    if (result.length !== 0) {
       resolve(result)
     } else {
-      reject(result)
+      reject("You can't post an empty message")
     }
   })
 }

@@ -134,6 +134,24 @@ describe("message api errors correctly", function() {
     })
   })
 
+  it("errors on bad update", function(done) {
+    data = {
+      content: "Hello World"
+    }
+    const res = request(MessageApp)
+    .put('/update/0')
+    .send(data)
+    .set("Accept", "application/json")
+    res.expect(404)
+    .end(function(err, res) {
+      if (err) {
+        return done(err)
+      }
+      expect(res.body).to.equal("You can't post an empty message")
+      done()
+    })
+  })
+
   it("errors deleting message that doesn't exist", function(done) {
     data = {
       id: 0
