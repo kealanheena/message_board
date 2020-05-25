@@ -1,21 +1,13 @@
 import React from 'react';
+import MessageList from './components/messageList';
+import MessageForm from './components/messageForm';
 import './App.css';
 
 function MessageApp() {
   return (
     <div className="App">
-      <textarea id="message_box"></textarea>
-      <br/>
-      <button
-      type="submit"
-      name="Submit"
-      id="submit">
-        Submit
-      </button>
-      <ul
-      id="message_list">
-        message
-      </ul>
+      <MessageForm/>
+      <MessageList/>
     </div>
   );
 }
