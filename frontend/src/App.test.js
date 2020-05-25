@@ -9,10 +9,10 @@ import { mount } from 'enzyme';
 Enzyme.configure({ adapter: new Adapter() })
 
 describe('App', () => {
-  // it('renders without crashing', () => {
-  //   const component = mount(<MessageApp/>);
-  //   expect(component).toMatchSnapahot();
-  // });
+  it('renders without crashing', () => {
+    const component = mount(<MessageApp/>);
+    expect(component).toMatchSnapshot();
+  });
 
   it('has textbox', () => {
     const component = mount(<MessageApp/>);
