@@ -68,18 +68,6 @@ describe('MessageApp erroring', () => {
       mockAxios.get.mockClear()
     })
 
-  it('loads err on GET err',async() => {
-    const component = await mount(<MessageApp/>);
-
-    console.log(component.state())
-    await component.update()
-    console.log(component.state())
-
-    expect(mockAxios.get).toHaveBeenCalledTimes(1);
-    // expect(component.state().error).toEqual({"response": {"data": "error text from json mock"}});
-    expect(component.find('#error').text()).toBe('Error: error text from json mock');
-  });
-
   it('loads err on Post err', async () => {
     const component = mount(<MessageApp/>);
 
