@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MessageList from '../messageList/messageList';
 import MessageForm from '../messageForm/messageForm';
+import ErrorHandler from '../errorHandler/errorHandler';
 import './App.css';
 
 import axios from 'axios';
@@ -14,12 +15,25 @@ class MessageApp extends Component {
     }
   }
 
+  setError(error) {
+    this.setState({
+      error: error
+    })
+  }
+
+  setMessages(messages) {
+    this.setState({
+      messages: messages
+    })
+  }
+
   getAllMessages = () => {
     axios.get(`${PORT}/`)
     .then((result) => {
-      this.setState({
-        messages: result.data
-      })
+      this.setMessages(result.data)
+    })
+    .catch((err) => {
+      this.setError(err)
     })
   }
 
@@ -27,7 +41,8 @@ class MessageApp extends Component {
     axios.post(`${PORT}/message`, {
       content: data
     })
-    .then(() => this.getAllMessages())
+    .then((result) => this.getAllMessages())
+    .catch((err) => this.setError(err))
   }
 
 
@@ -38,6 +53,9 @@ class MessageApp extends Component {
   render() {
     return (
       <div className="App">
+        <ErrorHandler
+          error={this.state.error}
+        />
         <MessageForm
           ref='messageFormRef'
           submitMessage={this.submitMessage}

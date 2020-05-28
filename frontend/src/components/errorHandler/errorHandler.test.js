@@ -24,6 +24,6 @@ it('displays with error', async () => {
       error={errorMock}
       />);
       await component.update()
-    expect(component.find('#error').text()).toBe("Error: error text from json mock");
+    expect(component.find('#error').text()).toBe("Error: Error text from json mock");
   });
 })
