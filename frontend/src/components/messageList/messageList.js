@@ -12,6 +12,8 @@ class MessageList extends React.Component {
                 {message.content}
                 <br/>
                 {message.date}
+                <br/>
+                <button id="delete">delete</button>
               </li>
           })}
         </ul>
