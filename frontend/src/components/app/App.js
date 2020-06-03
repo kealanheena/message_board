@@ -45,10 +45,16 @@ class MessageApp extends Component {
     .catch((err) => this.setError(err))
   }
 
+  deleteMessage = (id) => {
+    axios.delete(`${PORT}/delete/${id}`, { id: id })
+    .then((result)=>{ this.getAllMessages() })
+    .catch((err)=>{ this.setError(err); })
+  }
 
-  // componentDidMount(){
-  //   this.getAllMessages()
-  // }
+
+  componentDidMount(){
+    this.getAllMessages()
+  }
 
   render() {
     return (
@@ -60,7 +66,10 @@ class MessageApp extends Component {
           ref='messageFormRef'
           submitMessage={this.submitMessage}
         />
-        <MessageList/>
+        <MessageList
+          messages={this.state.messages}
+          handleDelete={this.deleteMessage}
+        />
       </div>
     );
   }
