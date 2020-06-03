@@ -21,6 +21,14 @@ describe('List', () => {
     expect(component.find('ul#message_list').length).toBe(1);
   })
 
+  it('each message has update button', () => {
+    const component = shallow(<MessageList
+      messages={mockMessages}
+      loaded={true}
+    />)
+    expect(component.find('ul#message_list').childAt(0).find('#update').text()).toBe('update')
+  });
+
   it('each message in list has a delete button', () => {
     const component = mount(<MessageList 
       messages={mockMessages}
