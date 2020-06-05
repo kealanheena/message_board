@@ -22,6 +22,13 @@ I would like the option to DESTROY a messages.
 
 ## Tech Used
 
+- JavaScript 
+- MongoDB
+- Express
+- React
+- Node.js
+- Mocha
+- Chai
 
 ## Features
 
