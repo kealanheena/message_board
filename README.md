@@ -1,4 +1,4 @@
-# message_board
+# Message Board
 
 ## User Stories
 
@@ -34,6 +34,10 @@ I would like the option to DESTROY a messages.
 
 You'll be able to:
 
+- Create a message
+- Read a message
+- Update a message
+- DESTROY/Delete a message
 
 ## Getting Started
 
