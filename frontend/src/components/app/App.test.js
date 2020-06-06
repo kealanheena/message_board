@@ -61,6 +61,19 @@ describe('MessageApp', () => {
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
   });
 
+  it('updates message on update', async () => {
+    const component = await mount(<MessageApp/>);
+    await component.update()
+    await component.find('ul#message_list').childAt(0).find('#update').simulate('click')
+
+    expect(component.find('ul#message_list').childAt(0).find('#send').text()).toBe('Send Update')
+    
+    component.find('ul#message_list').childAt(0).find('#send').simulate('click')
+
+    expect(mockAxios.put).toHaveBeenCalledWith("http://localhost:3001/update/1", {"content": "Hello"});
+    expect(component.find('textarea').text()).toEqual('');
+  });
+
   it('removes on delete message', async () => {
     const component = await mount(<MessageApp/>);
     await component.update()

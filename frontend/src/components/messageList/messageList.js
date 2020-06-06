@@ -25,7 +25,7 @@ class MessageList extends React.Component {
     )
   }
   render() {
-    if (this.props.messages) {
+    if (this.props.messages && !this.props.messages.length === 0) {
       return (
       <div>
         <ul id='message_list'>

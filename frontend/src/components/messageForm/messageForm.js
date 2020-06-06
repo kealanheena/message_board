@@ -32,7 +32,7 @@ class MessageForm extends React.Component {
         </textarea>
         <br/>
         <button
-          type="button"
+          type="submit"
           name="Submit"
           id="submit">
             Submit

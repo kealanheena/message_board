@@ -11,7 +11,7 @@ class MessageApp extends Component {
   constructor(){
     super()
     this.state = {
-      messages: []
+      messages: [{"content": "Hello","date": "2019-11-27T18:59:53.347Z","id": 1}]
     }
   }
 
@@ -38,9 +38,7 @@ class MessageApp extends Component {
   }
 
   submitMessage = (data) => {
-    axios.post(`${PORT}/message`, {
-      content: data
-    })
+    axios.post(`${PORT}/message`, { content: data })
     .then((result) => this.getAllMessages())
     .catch((err) => this.setError(err))
   }
