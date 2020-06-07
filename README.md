@@ -60,6 +60,20 @@ $ cd
 
 ## Tests 
 
-### Unit Tests
+### Back-End Test
 
-### Feature Tests
+#### App
+- MessageApp Tests
+  - posts a message
+  - gets all messages
+  - gets a single message
+  - updates a message
+  - deletes a message
+- message api errors correctly
+  - posts a message errors
+  - gets all errors when no messages
+  - errors if cant find single message
+  - errors on bad update
+  - errors deleting message that doesn't exist
+
+### Front-End Test
