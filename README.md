@@ -75,7 +75,7 @@ $ cd
   - errors if cant find single message
   - errors on bad update
   - errors deleting message that doesn't exist
-#### Controler
+#### Controller
 - App
   - getAll returns all messages
   - app has messages
@@ -94,3 +94,14 @@ $ cd
   - errors if no message to delete
 
 ### Front-End Test
+#### App
+- MessageApp
+  - renders without crashing
+  - has textbox
+  - has a submit button
+  - has message list
+  - posts data and clears message box on submit success
+  - loads data from API
+  - updates message on update
+  - removes on delete message
+- MessageApp erroring
