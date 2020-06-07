@@ -75,5 +75,22 @@ $ cd
   - errors if cant find single message
   - errors on bad update
   - errors deleting message that doesn't exist
+#### Controler
+- App
+  - getAll returns all messages
+  - app has messages
+  - app creates message (post)
+  - message has content, date, and id
+  - app reads (get)
+  - app updates (update)
+  - app deletes (delete)
+  - id's are always unique
+  - app deletes correctly
+  - app updates correctly
+  - app reads from given filepath
+  - rejects empty messages
+  - no messages if no messages are sent
+  - rejects false update
+  - errors if no message to delete
 
 ### Front-End Test
