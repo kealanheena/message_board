@@ -10,7 +10,7 @@ Enzyme.configure({ adapter: new Adapter() })
 
 describe('List', () => {
   it('renders without crashing', () => {
-    const component = mount*(<MessageList/>);
+    const component = mount(<MessageList/>);
     expect(component).toMatchSnapshot();
   })
 
