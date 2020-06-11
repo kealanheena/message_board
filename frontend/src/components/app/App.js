@@ -43,6 +43,18 @@ class MessageApp extends Component {
     .catch((err) => this.setError(err))
   }
 
+  sendUpdate = (id, content) => {
+    axios.put(`${PORT}/update/${id}`, {
+      content: content
+    })
+    .then((result) => {
+      this.getAllMessages()
+    })
+    .catch((err) => {
+      this.setError(err);
+    })
+  }
+
   deleteMessage = (id) => {
     axios.delete(`${PORT}/delete/${id}`, { id: id })
     .then((result)=>{ this.getAllMessages() })
@@ -67,6 +79,7 @@ class MessageApp extends Component {
         <MessageList
           messages={this.state.messages}
           handleDelete={this.deleteMessage}
+          sendUpdate={this.sendUpdate}
         />
       </div>
     );

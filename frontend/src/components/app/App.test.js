@@ -76,6 +76,7 @@ describe('MessageApp', () => {
 
   it('removes on delete message', async () => {
     const component = await mount(<MessageApp/>);
+
     await component.update()
     await component.find('ul#message_list').childAt(0).find('#delete').simulate('click');
     await component.update();
