@@ -5,7 +5,7 @@ import ErrorHandler from '../errorHandler/errorHandler';
 import './App.css';
 
 import axios from 'axios';
-const PORT = 'http://localhost:3000';
+const PORT = 'http://localhost:3001';
 
 class MessageApp extends Component {
   constructor(){

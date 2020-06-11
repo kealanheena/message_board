@@ -52,7 +52,7 @@ describe('MessageApp', () => {
     });
     component.find('form').simulate('submit')
 
-    expect(mockAxios.post).toHaveBeenCalledWith("http://localhost:3000/message", { "content": "Hello" });
+    expect(mockAxios.post).toHaveBeenCalledWith("http://localhost:3001/message", { "content": "Hello" });
     expect(component.instance().refs.messageFormRef.state.currentMessage).toEqual('');
   });
 
@@ -67,7 +67,7 @@ describe('MessageApp', () => {
     await component.find('ul#message_list').childAt(0).find('#update').simulate('click')
 
     expect(component.find('ul#message_list').childAt(0).find('#send').text()).toBe('Send Update')
-    
+
     component.find('ul#message_list').childAt(0).find('#send').simulate('click')
 
     expect(mockAxios.put).toHaveBeenCalledWith("http://localhost:3001/update/1", {"content": "Hello"});
@@ -81,7 +81,7 @@ describe('MessageApp', () => {
     await component.find('ul#message_list').childAt(0).find('#delete').simulate('click');
     await component.update();
 
-    expect(mockAxios.delete).toHaveBeenCalledWith("http://localhost:3000/delete/1", { id: 1 });
+    expect(mockAxios.delete).toHaveBeenCalledWith("http://localhost:3001/delete/1", { id: 1 });
   })
 });
 

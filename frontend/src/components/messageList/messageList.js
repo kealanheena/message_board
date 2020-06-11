@@ -52,7 +52,7 @@ class MessageList extends React.Component {
         ></textarea>)
         
       updateButton = (<button
-        onClick={() => this.toggleUpdate(!message)}
+        onClick={() => this.sendUpdate(message)}
         id='send'>
           Send Update
         </button>)
