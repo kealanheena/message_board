@@ -20,7 +20,19 @@ class MessageList extends React.Component {
     })
   }
 
+  sendUpdate(){
+    this.props.sendUpdate(
+      this.state.editMode.id,
+      this.refs.updateBox.value)
+
+      this.toggleUpdate({ id: null, content: null })
+  }
+
+
+
   formatMessage(message){
+
+    let content = message.content
 
     let updateButton = <button
       onClick={() => this.toggleUpdate(message)}
@@ -29,6 +41,16 @@ class MessageList extends React.Component {
       </button>
 
     if (message.id === this.state.editMode.id){
+      content = (<textarea
+        onChange={(e) => this.setState({editMode: {
+          id: message.id,
+          content: e.target.value
+        }})}
+        value={this.state.editMode.content}
+        ref='updateBox'
+        id='updateBox'
+        ></textarea>)
+        
       updateButton = (<button
         onClick={() => this.toggleUpdate(!message)}
         id='send'>
@@ -40,7 +62,7 @@ class MessageList extends React.Component {
       <li
       className='message'
       key={message.id}>
-        {message.content}
+        {content}
           <br/>
         {new Date(message.date).toLocaleTimeString('en-UK')} 
           <br/>
