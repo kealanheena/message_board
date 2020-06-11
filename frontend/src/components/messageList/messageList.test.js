@@ -29,6 +29,15 @@ describe('List', () => {
     expect(component.find('ul#message_list').childAt(0).find('#update').text()).toBe('update')
   });
 
+  it('update click changes button text', () => {
+    const component = mount(<MessageList
+      messages={mockMessages}
+      loaded={true}
+    />)
+    component.find('ul#message_list').childAt(0).find('#update').simulate('click')
+    expect(component.find('ul#message_list').childAt(0).find('#send').text()).toBe('Send Update')
+  });
+
   it('each message in list has a delete button', () => {
     const component = mount(<MessageList 
       messages={mockMessages}

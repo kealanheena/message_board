@@ -1,8 +1,41 @@
 import React from 'react'; 
 
 class MessageList extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      editMode: {
+        id: null,
+        content: null
+      }
+    }
+  }
   
+  toggleUpdate(message){
+    this.setState({
+      editMode: {
+        id: message.id,
+        content: message.content
+      }
+    })
+  }
+
   formatMessage(message){
+
+    let updateButton = <button
+      onClick={() => this.toggleUpdate(message)}
+      id="update">
+       update 
+      </button>
+
+    if (message.id === this.state.editMode.id){
+      updateButton = (<button
+        onClick={() => this.toggleUpdate(!message)}
+        id='send'>
+          Send Update
+        </button>)
+    }
+    
     return (
       <li
       className='message'
@@ -14,13 +47,10 @@ class MessageList extends React.Component {
         {new Date(message.date).toLocaleDateString('en-UK')}
       <button
       id='delete'
-      onClick={()=>this.props.handleDelete(message.id)}>
+      onClick={() => this.props.handleDelete(message.id)}>
         delete
       </button>
-      <button
-      id='update'>
-        update
-      </button>
+      {updateButton}
       </li>
     )
   }
