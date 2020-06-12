@@ -138,4 +138,21 @@ describe('MessageApp erroring', () => {
     expect(component.find('#error').text()).toBe('Error: Error text from json mock');
   })
 
+  it('loads err on update err', async () => {
+    const component = await mount(<MessageApp/>);
+    component.setState({
+      messages: mockMessages,
+      loaded: true
+    })
+
+    await component.update()
+    await component.find('ul#message_list').childAt(0).find('#update').simulate('click')
+
+    expect(component.find('ul#message_list').childAt(0).find('#send').text()).toBe('Send Update');
+
+    component.find('ul#message_list').childAt(0).find('#send').simulate('click')
+
+    expect(component.state().error).toEqual("Error text from json mock");
+    expect(component.find('#error').text()).toBe('Error: Error text from json mock');
+  })
 });
