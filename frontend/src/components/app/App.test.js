@@ -89,12 +89,26 @@ describe('MessageApp erroring', () => {
   beforeEach(function(){
   mockAxios.post.mockImplementation(() => Promise.reject(errorMock));
   mockAxios.get.mockImplementation(() => Promise.reject(errorMock));
+  mockAxios.delete.mockImplementationOnce(() => Promise.reject(errorMock));
+  mockAxios.put.mockImplementationOnce(() => Promise.reject(errorMock));
 })
 
   afterEach(function(){
       mockAxios.post.mockClear()
       mockAxios.get.mockClear()
-    })
+      mockAxios.delete.mockClear()
+      mockAxios.put.mockClear()
+  })
+
+  it('loads err on GET err', async () => {
+    var component = await mount(<MessageApp/>);
+
+    await component.update()
+
+    expect(component.state().error).toEqual('Error text from json mock');
+    expect(component.find('#error').text()).toBe('Error: Error text from json mock');
+  });
+
 
   it('loads err on Post err', async () => {
     const component = mount(<MessageApp/>);
@@ -108,4 +122,20 @@ describe('MessageApp erroring', () => {
     expect(component.state().error).toEqual("Error text from json mock");
     expect(component.find('#error').text()).toBe('Error: Error text from json mock');
   });
+
+  it('loads err on delete err', async () => {
+    const component = await mount(<MessageApp/>);
+    component.setState({
+      messages: mockMessages,
+      loaded: true
+    })
+
+    await component.update()
+    await component.find('ul#message_list').childAt(0).find('#delete').simulate('click');
+    await component.update()
+
+    expect(component.state().error).toEqual('Error text from json mock');
+    expect(component.find('#error').text()).toBe('Error: Error text from json mock');
+  })
+
 });
