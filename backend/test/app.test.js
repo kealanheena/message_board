@@ -4,6 +4,7 @@ import mongoose from "mongoose"
 import MessageApp from "../app.js"
 
 let data;
+let id;
 
 describe("message API endpoint tests", function(){
 
@@ -44,9 +45,8 @@ describe("message API endpoint tests", function(){
       if (err) {
         return done(err)
       }
-      console.log(res.body)
+      id = res.body[0]._id;
       expect(res.body.length).to.equal(1)
-      expect(res.body[0].id).to.equal(1)
       expect(res.body[0].content).to.equal('hi world')
       done()
     })

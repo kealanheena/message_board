@@ -1,14 +1,7 @@
 import MessageModel from './model.js'
 
 function getAll() {
-  return new Promise((resolve, reject) => {
-    var result = messageApp.getAll()
-    if (result.length !== 0) {
-      resolve(result)
-    } else {
-      reject("No messages in database")
-    }
-  })
+  return MessageModel.find()
 }
 
 function post(content) {
