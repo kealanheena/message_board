@@ -70,7 +70,7 @@ describe("message API endpoint tests", function(){
       content: "Hello World"
     }
     const res = request(MessageApp)
-    .put('/update/1')
+    .put(`/update/${id}`)
     .send(data)
     .set("Accept", "application/json")
     res.expect(200)
@@ -78,7 +78,7 @@ describe("message API endpoint tests", function(){
       if (err) {
         return done(err)
       }
-      expect(res.body[0].content).to.equal("Hello World")
+      expect(res.body.content).to.equal("Hello World")
       done()
     })
   })
