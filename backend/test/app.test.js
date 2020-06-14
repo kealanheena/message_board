@@ -113,7 +113,7 @@ describe("message api errors correctly", function() {
       if (err) {
         return done(err)
       }
-      expect(res.body).to.equal("You can't post an empty message")
+      expect(res.body).to.equal('You can\’t post an empty message')
       done()
     })
   })
@@ -137,6 +137,7 @@ describe("message api errors correctly", function() {
     res.expect(404)
     .end(function(err, res) {
       if (err) {
+        console.log('shiitt')
         return done(err)
       }
       expect(res.body).to.equal('Message not found in database')
