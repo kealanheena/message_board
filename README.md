@@ -1,6 +1,6 @@
 # Message Board
 
-<img src="./img/message_board.png">
+<img src="./img/message_board.png" align="center">
 
 ## User Stories
 
