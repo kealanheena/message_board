@@ -20,9 +20,7 @@ MessageSchema.post('findOneAndUpdate', function(doc, next) {
 });
 
 MessageSchema.post('findOne', function(doc, next) {
-  console.log("======HERE======");
   if(!doc){
-    console.log("======HERE======");
     next('Message not found in database')
   };
   next()
