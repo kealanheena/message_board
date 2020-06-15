@@ -44,11 +44,11 @@ You'll be able to:
 ### Local Setup
 
 ```sh
-$ git clone 
+$ git clone https://github.com/kealanheena/message_board.git
 ```
 
 ```sh
-$ cd 
+$ cd messsage_board
 ```
 
 #### To Start
@@ -57,6 +57,19 @@ $ cd
 
 ## Running the tests
 
+to run the backend tests:
+
+```
+$ cd backend
+$ npm test
+```
+
+to run the backend tests:
+
+```
+$ cd fontend
+$ npm test
+```
 
 ## Tests 
 

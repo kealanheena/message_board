@@ -20,7 +20,9 @@ MessageSchema.post('findOneAndUpdate', function(doc, next) {
 });
 
 MessageSchema.post('findOne', function(doc, next) {
+  console.log("======HERE======");
   if(!doc){
+    console.log("======HERE======");
     next('Message not found in database')
   };
   next()
@@ -34,7 +36,7 @@ MessageSchema.post('find', function(doc, next) {
 })
 
 MessageSchema.post('deleteOne', function(doc, next) {
-  if(doc.deleteCount === 0){
+  if(doc.deletedCount === 0){
     next('Message not found in database')
   };
   next()

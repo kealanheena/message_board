@@ -133,13 +133,13 @@ describe("message api errors correctly", function() {
 
   it("errors if cant find single message", function(done) {
     const res = request(MessageApp)
-    .get("/message/1")
+    .get("/message/0")
     res.expect(404)
     .end(function(err, res) {
       if (err) {
-        console.log('shiitt')
         return done(err)
       }
+      console.log(res.body)
       expect(res.body).to.equal('Message not found in database')
       done()
     })
