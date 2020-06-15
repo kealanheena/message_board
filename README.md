@@ -1,5 +1,7 @@
 # Message Board
 
+<img src="./img/message_board.png">
+
 ## User Stories
 
 ```
@@ -53,7 +55,15 @@ $ cd messsage_board
 
 #### To Start
 
+You'll need to run the backend and front end with
 
+```
+npm start
+```
+
+You'll also need to run mongo
+
+After that you can create, view, update and delete messages
 
 ## Running the tests
 
