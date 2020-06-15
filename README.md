@@ -99,23 +99,6 @@ $ npm test
   - errors if cant find single message
   - errors on bad update
   - errors deleting message that doesn't exist
-#### Controller
-- App
-  - getAll returns all messages
-  - app has messages
-  - app creates message (post)
-  - message has content, date, and id
-  - app reads (get)
-  - app updates (update)
-  - app deletes (delete)
-  - id's are always unique
-  - app deletes correctly
-  - app updates correctly
-  - app reads from given filepath
-  - rejects empty messages
-  - no messages if no messages are sent
-  - rejects false update
-  - errors if no message to delete
 
 ### Front-End Test
 #### App
@@ -129,3 +112,26 @@ $ npm test
   - updates message on update
   - removes on delete message
 - MessageApp erroring
+  - loads err on GET err
+  - loads err on Post err
+  - loads err on delete err
+  - loads err on update err
+  
+ #### Error Handler
+ - Error
+  - renders without crashing
+  - empty without error
+  - displays with error
+  
+ #### MessageForm
+ - Form
+  - renders without crashing
+  - should update state message when text entered
+  - clears messagebox on submit
+  
+#### MessageList
+- List
+- takes messages as props and displays them
+- each message has update button
+- update click toggles edit mode
+- each message in list has a delete button
