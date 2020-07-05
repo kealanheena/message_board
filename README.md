@@ -1,4 +1,5 @@
 # Message Board
+
 <p align="center">
   <img src="./img/message_board.png">
 </p>
